@@ -23,3 +23,4 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/list', [ToDoController::class, "ListToDo"])->name('list');
+Route::get('/delete/{id}', [ToDoController::class, "DeleteTodo"]);

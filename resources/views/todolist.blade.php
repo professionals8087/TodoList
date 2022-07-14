@@ -93,11 +93,11 @@
                                             <td>
                                                 <div class="d-flex flex-row justify-content-start p-2 mb-1">
                                                     <a href="#!" class="text-primary" data-mdb-toggle="tooltip"
-                                                        title="Delete todo"><i
+                                                        title="Done todo"><i
                                                             class="fa-solid fa-clipboard-check me-3"></i></a>
                                                     <a href="#!" class="text-info" data-mdb-toggle="tooltip"
                                                         title="Edit todo"><i class="fas fa-pencil-alt me-3"></i></a>
-                                                    <a href="#!" class="text-danger" data-mdb-toggle="tooltip"
+                                                    <a href="/delete/{{ $stmt->id }}" class="text-danger" data-mdb-toggle="tooltip"
                                                         title="Delete todo"><i class="fas fa-trash-alt"></i></a>
                                                 </div>
                                             </td>
