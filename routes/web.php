@@ -15,17 +15,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('categorylist');
-// });
+Route::get('/', function () {
+    return view('details');
+});
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/list', [ToDoController::class, "ListToDo"])->name('list');
+Route::get('/todos', [ToDoController::class, "ListToDo"])->name('listtodo');
+Route::get('/details/{id}', [ToDoController::class, "DetailsToDo"]);
 Route::get('/delete/{id}', [ToDoController::class, "DeleteTodo"]);
-Route::post('/store', [ToDoController::class, "StoreToDo"])->name('store');
+Route::post('/storetodo', [ToDoController::class, "StoreToDo"])->name('storetodo');
 
 
-Route::get('/category', [CategoryController::class, "ListCategory"])->name('listCategory');
+Route::get('/categories', [CategoryController::class, "ListCategory"])->name('listCategory');
+Route::post('/storecategory', [CategoryController::class, "StoreCategory"])->name('storecategory');

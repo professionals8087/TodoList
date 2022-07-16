@@ -27,22 +27,22 @@
                             <div class="pb-2">
                                 <div class="card">
                                     <div class="card-body">
-                                        <form action="{{ route('store') }}" method="POST">
+                                        <form action="{{ route('storetodo') }}" method="POST">
                                             @csrf
                                             <div class="d-flex flex-row align-items-center">
                                                 <input type="text" name="title"
                                                     class="form-control form-control-lg border"
                                                     id="exampleFormControlInput1" placeholder="Add new...">
                                             </div><br>
-                                            <div class="d-flex flex-row align-items-center">
-                                                <input type="text" name="description"
-                                                    class="form-control form-control-lg border"
-                                                    id="exampleFormControlInput1" placeholder="Add Description">
+                                            <div class="class="mb-3">
+                                                <textarea name="description" class="form-control form-control-lg border" id="exampleFormControlTextarea1" rows="3"
+                                                    placeholder="Add Description..."></textarea>
                                             </div><br>
                                             <div class="d-flex flex-row align-items-center">
-                                                <select class="form-select" aria-label="Default select example">
+                                                <select class="form-select" aria-label="Default select example"
+                                                    name="category">
                                                     <option selected>Open</option>
-                                                    <option value="1">Done</option>
+                                                    <option>Done</option>
                                                 </select>
                                             </div><br>
                                             <div>
@@ -76,10 +76,10 @@
                                 <tr>
                                     <th scope="col">#</th>
                                     <th scope="col">Title</th>
-                                    <th scope="col">Description</th>
-                                    <th scope="col">Date</th>
                                     <th scope="col">Category</th>
+                                    <th scope="col">Date_Check</th>
                                     <th scope="col">Action</th>
+                                    <th scope="col">Details</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -90,19 +90,16 @@
                                             <p class="fw-normal mb-0">{{ $stmt->title }}</p>
                                         </td>
                                         <td>
-                                            <p class="fw-normal mb-0">{{ $stmt->description }}</p>
+                                            <p class="fw-normal mb-0" name="category">{{ $stmt->category }}</p>
                                         </td>
                                         <td>
                                             <div class="text-justify text-muted">
                                                 <a href="#!" class="text-muted" data-mdb-toggle="tooltip"
-                                                    title="Created date">
+                                                    title="DateCheck">
                                                     <p class="small mb-0"><i class="fas fa-info-circle me-2"></i>
                                                     </p>
                                                 </a>
                                             </div>
-                                        </td>
-                                        <td>
-                                            <p class="fw-normal mb-0">{{ $stmt->categoryID }}</p>
                                         </td>
                                         <td>
                                             <div class="d-flex flex-row justify-content-start p-2 mb-1">
@@ -112,9 +109,14 @@
                                                 <a href="#!" class="text-info" data-mdb-toggle="tooltip"
                                                     title="Edit todo"><i class="fas fa-pencil-alt me-3"></i></a>
                                                 <a href="/delete/{{ $stmt->id }}" class="text-danger"
-                                                    data-mdb-toggle="tooltip" title="Delete todo"><i
+                                                    data-mdb-toggle="tooltip" title="Delete todo"
+                                                    onclick="return confirm('آیا میخواهید کار <{{ $stmt->title }}> را حذف کنید؟')"><i
                                                         class="fas fa-trash-alt"></i></a>
                                             </div>
+                                        </td>
+                                        <td>
+                                            <a href="/details/{{ $stmt->id }}"><button type="button"
+                                                    class="btn btn-secondary">Details</button></a>
                                         </td>
                                     </tr>
                                 @endforeach

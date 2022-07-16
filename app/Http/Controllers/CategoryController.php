@@ -12,4 +12,14 @@ class CategoryController extends Controller
         $stmt = Category::query()->get()->all();
         return view('categorylist', ['category' => $stmt]);
     }
+
+    public function StoreCategory(Request $request)
+    {
+        $category = new Category();
+        $category->title = $request->title;
+        if ($category->save()) {
+            return redirect()->route('listCategory');
+        }
+        return;
+    }
 }

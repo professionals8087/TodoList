@@ -13,10 +13,16 @@ class ToDoController extends Controller
         return view('todolist', ['todo' => $stmt]);
     }
 
+    public function DetailsToDo($id)
+    {
+        $stmt = Todo::query()->find($id);
+        return view('details', ["show" => $stmt]);
+    }
+
     public function DeleteTodo(Todo $id)
     {
         $id->delete();
-        return redirect()->route('list');
+        return redirect()->route('listtodo');
     }
 
     public function StoreToDo(Request $request)
@@ -26,7 +32,7 @@ class ToDoController extends Controller
         $todo->description = $request->description;
         $todo->category = $request->category;
         if ($todo->save()) {
-            return redirect()->route('list');
+            return redirect()->route('listtodo');
         }
         return;
     }

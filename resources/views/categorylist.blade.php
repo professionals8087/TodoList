@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>TodoList</title>
+    <title>CategoryList</title>
     <link rel="stylesheet" href="../css/all.css">
     <link rel="stylesheet" href="../css/fonts/font/fonts.css">
     <link rel="stylesheet" href="../css/fonts/fontawesome/css/all.min.css">
@@ -26,7 +26,7 @@
                             <div class="pb-2">
                                 <div class="card">
                                     <div class="card-body">
-                                        <form action="" method="POST">
+                                        <form action="{{ route('storecategory') }}" method="POST">
                                             @csrf
                                             <div class="d-flex flex-row align-items-center">
                                                 <input type="text" name="title"
@@ -46,7 +46,8 @@
                                 <tr>
                                     <th scope="col">#</th>
                                     <th scope="col">Title</th>
-                                    <th scope="col">Date</th>
+                                    <th scope="col">Created_at</th>
+                                    <th scope="col">Updated_at</th>
                                     <th scope="col">Action</th>
                                 </tr>
                             </thead>
@@ -60,8 +61,17 @@
                                         <td>
                                             <div class="text-justify text-muted">
                                                 <a href="#!" class="text-muted" data-mdb-toggle="tooltip"
-                                                    title="Created date">
-                                                    <p class="small mb-0"><i class="fas fa-info-circle me-2"></i>
+                                                    title="created_at">
+                                                    <p class="small mb-0">{{ $stmt->created_at}}<i class="fas fa-info-circle me-2"></i>
+                                                    </p>
+                                                </a>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="text-justify text-muted">
+                                                <a href="#!" class="text-muted" data-mdb-toggle="tooltip"
+                                                    title="updated_at">
+                                                    <p class="small mb-0">{{ $stmt->updated_at}}<i class="fas fa-info-circle me-2"></i>
                                                     </p>
                                                 </a>
                                             </div>
