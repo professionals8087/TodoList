@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ToDoController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,9 +15,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('categorylist');
-});
+// Route::get('/', function () {
+//     return view('categorylist');
+// });
 
 Auth::routes();
 
@@ -25,3 +26,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/list', [ToDoController::class, "ListToDo"])->name('list');
 Route::get('/delete/{id}', [ToDoController::class, "DeleteTodo"]);
 Route::post('/store', [ToDoController::class, "StoreToDo"])->name('store');
+
+
+Route::get('/category', [CategoryController::class, "ListCategory"])->name('listCategory');
