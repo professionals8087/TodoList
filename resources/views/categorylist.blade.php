@@ -20,30 +20,18 @@
                         <div class="card-body py-4 px-4 px-md-5">
 
                             <p class="h1 text-center mt-3 mb-4 pb-3 text-primary">
-                                <i class="fas fa-check-square me-1"></i>
-                                <u>My Todo-s</u>
+                                <u>My Categories</u>
                             </p>
 
                             <div class="pb-2">
                                 <div class="card">
                                     <div class="card-body">
-                                        <form action="{{ route('store') }}" method="POST">
+                                        <form action="" method="POST">
                                             @csrf
                                             <div class="d-flex flex-row align-items-center">
                                                 <input type="text" name="title"
                                                     class="form-control form-control-lg border"
                                                     id="exampleFormControlInput1" placeholder="Add new...">
-                                            </div><br>
-                                            <div class="d-flex flex-row align-items-center">
-                                                <input type="text" name="description"
-                                                    class="form-control form-control-lg border"
-                                                    id="exampleFormControlInput1" placeholder="Add Description">
-                                            </div><br>
-                                            <div class="d-flex flex-row align-items-center">
-                                                <select class="form-select" aria-label="Default select example">
-                                                    <option selected>Open</option>
-                                                    <option value="1">Done</option>
-                                                </select>
                                             </div><br>
                                             <div>
                                                 <button type="submit" class="btn btn-primary">Add</button>
@@ -76,21 +64,16 @@
                                 <tr>
                                     <th scope="col">#</th>
                                     <th scope="col">Title</th>
-                                    <th scope="col">Description</th>
                                     <th scope="col">Date</th>
-                                    <th scope="col">Category</th>
                                     <th scope="col">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($todo as $stmt)
+                                {{-- @foreach ($todo as $stmt) --}}
                                     <tr>
-                                        <td>{{ $stmt->id }}</td>
+                                        <td></td>
                                         <td>
-                                            <p class="fw-normal mb-0">{{ $stmt->title }}</p>
-                                        </td>
-                                        <td>
-                                            <p class="fw-normal mb-0">{{ $stmt->description }}</p>
+                                            <p class="fw-normal mb-0"></p>
                                         </td>
                                         <td>
                                             <div class="text-justify text-muted">
@@ -102,22 +85,16 @@
                                             </div>
                                         </td>
                                         <td>
-                                            <p class="fw-normal mb-0">{{ $stmt->categoryID }}</p>
-                                        </td>
-                                        <td>
                                             <div class="d-flex flex-row justify-content-start p-2 mb-1">
-                                                <a href="#!" class="text-primary" data-mdb-toggle="tooltip"
-                                                    title="Done todo"><i
-                                                        class="fa-solid fa-clipboard-check me-3"></i></a>
                                                 <a href="#!" class="text-info" data-mdb-toggle="tooltip"
                                                     title="Edit todo"><i class="fas fa-pencil-alt me-3"></i></a>
-                                                <a href="/delete/{{ $stmt->id }}" class="text-danger"
+                                                <a href="#!" class="text-danger"
                                                     data-mdb-toggle="tooltip" title="Delete todo"><i
                                                         class="fas fa-trash-alt"></i></a>
                                             </div>
                                         </td>
                                     </tr>
-                                @endforeach
+                                {{-- @endforeach --}}
                             </tbody>
                         </table>
                     </div>

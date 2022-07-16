@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('categorylist');
 });
 
 Auth::routes();
@@ -24,3 +24,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('/list', [ToDoController::class, "ListToDo"])->name('list');
 Route::get('/delete/{id}', [ToDoController::class, "DeleteTodo"]);
+Route::post('/store', [ToDoController::class, "StoreToDo"])->name('store');
