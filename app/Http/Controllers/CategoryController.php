@@ -16,10 +16,16 @@ class CategoryController extends Controller
     public function StoreCategory(Request $request)
     {
         $category = new Category();
-        $category->title = $request->title;
+        $category->name = $request->name;
         if ($category->save()) {
             return redirect()->route('listCategory');
         }
         return;
+    }
+
+    public function DeleteCategory(Category $id)
+    {
+        $id->delete();
+        return redirect()->route('listCategory');
     }
 }

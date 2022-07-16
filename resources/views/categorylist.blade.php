@@ -29,7 +29,7 @@
                                         <form action="{{ route('storecategory') }}" method="POST">
                                             @csrf
                                             <div class="d-flex flex-row align-items-center">
-                                                <input type="text" name="title"
+                                                <input type="text" name="name"
                                                     class="form-control form-control-lg border"
                                                     id="exampleFormControlInput1" placeholder="Add new...">
                                             </div><br>
@@ -45,7 +45,7 @@
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>
-                                    <th scope="col">Title</th>
+                                    <th scope="col">Name</th>
                                     <th scope="col">Created_at</th>
                                     <th scope="col">Updated_at</th>
                                     <th scope="col">Action</th>
@@ -56,7 +56,7 @@
                                     <tr>
                                         <td>{{ $stmt->id }}</td>
                                         <td>
-                                            <p class="fw-normal mb-0">{{ $stmt->title }}</p>
+                                            <p class="fw-normal mb-0">{{ $stmt->name }}</p>
                                         </td>
                                         <td>
                                             <div class="text-justify text-muted">
@@ -80,8 +80,8 @@
                                             <div class="d-flex flex-row justify-content-start p-2 mb-1">
                                                 <a href="#!" class="text-info" data-mdb-toggle="tooltip"
                                                     title="Edit todo"><i class="fas fa-pencil-alt me-3"></i></a>
-                                                <a href="#!" class="text-danger" data-mdb-toggle="tooltip"
-                                                    title="Delete todo"><i class="fas fa-trash-alt"></i></a>
+                                                <a href="/delete/{{ $stmt->id }}" class="text-danger" data-mdb-toggle="tooltip"
+                                                    title="Delete todo" onclick="return confirm('آیا میخواهید دسته بندی <{{ $stmt->title }}> را حذف کنید؟')"><i class="fas fa-trash-alt"></i></a>
                                             </div>
                                         </td>
                                     </tr>

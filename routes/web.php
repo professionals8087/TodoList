@@ -31,3 +31,4 @@ Route::post('/storetodo', [ToDoController::class, "StoreToDo"])->name('storetodo
 
 Route::get('/categories', [CategoryController::class, "ListCategory"])->name('listCategory');
 Route::post('/storecategory', [CategoryController::class, "StoreCategory"])->name('storecategory');
+Route::get('/delete/{id}', [CategoryController::class, "DeleteCategory"]);

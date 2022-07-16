@@ -18,14 +18,14 @@ class CategorySeeder extends Seeder
         DB::table('categories')->insert([
             [
                 "id" => 1,
-                "title" => "Open",
+                "name" => "Open",
             ]
         ]);
 
         DB::table('categories')->insert([
             [
                 "id" => 2,
-                "title" => "Done",
+                "name" => "Done",
             ]
         ]);
     }
