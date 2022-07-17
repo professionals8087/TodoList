@@ -27,7 +27,7 @@
                             <div class="pb-2">
                                 <div class="card">
                                     <div class="card-body">
-                                        <form action="{{ route('storetodo') }}" method="POST">
+                                        <form action="{{ route('storeTodo') }}" method="POST">
                                             @csrf
                                             <div class="d-flex flex-row align-items-center">
                                                 <input type="text" name="title"
@@ -106,16 +106,16 @@
                                                 <a href="#!" class="text-primary" data-mdb-toggle="tooltip"
                                                     title="Done todo"><i
                                                         class="fa-solid fa-clipboard-check me-3"></i></a>
-                                                <a href="#!" class="text-info" data-mdb-toggle="tooltip"
+                                                <a href="/todo/update/{{ $stmt->id }}" class="text-info" data-mdb-toggle="tooltip"
                                                     title="Edit todo"><i class="fas fa-pencil-alt me-3"></i></a>
-                                                <a href="/delete/{{ $stmt->id }}" class="text-danger"
+                                                <a href="/todo/delete/{{ $stmt->id }}" class="text-danger"
                                                     data-mdb-toggle="tooltip" title="Delete todo"
                                                     onclick="return confirm('آیا میخواهید کار <{{ $stmt->title }}> را حذف کنید؟')"><i
                                                         class="fas fa-trash-alt"></i></a>
                                             </div>
                                         </td>
                                         <td>
-                                            <a href="/details/{{ $stmt->id }}"><button type="button"
+                                            <a href="/todo/details/{{ $stmt->id }}"><button type="button"
                                                     class="btn btn-secondary">Details</button></a>
                                         </td>
                                     </tr>

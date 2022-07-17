@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
     use HasFactory;
+
+    public static function getAll()
+    {
+        return self::query()->get()->all();
+    }
+
+    public static function getID($id)
+    {
+        return self::query()->where('id', $id)->first();
+    }
 }

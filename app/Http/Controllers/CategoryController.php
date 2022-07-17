@@ -9,7 +9,7 @@ class CategoryController extends Controller
 {
     public function ListCategory()
     {
-        $stmt = Category::query()->get()->all();
+        $stmt = Category::getAll();
         return view('categorylist', ['category' => $stmt]);
     }
 
@@ -27,5 +27,23 @@ class CategoryController extends Controller
     {
         $id->delete();
         return redirect()->route('listCategory');
+    }
+
+    public function UpdateCategory($id)
+    {
+        $id = Category::getID($id);
+        return view('editCategory', ["id" => $id]);
+    }
+
+    public function EditCategory(Request $request, $id)
+    {
+        $stmt = Category::getID($id);
+        if ($stmt) {
+            $stmt->name = $request->name;
+            if ($stmt->save()) {
+                return redirect()->route('listCategory');
+            }
+        }
+        return;
     }
 }

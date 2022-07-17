@@ -23,12 +23,16 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/todos', [ToDoController::class, "ListToDo"])->name('listtodo');
-Route::get('/details/{id}', [ToDoController::class, "DetailsToDo"]);
-Route::get('/delete/{id}', [ToDoController::class, "DeleteTodo"]);
-Route::post('/storetodo', [ToDoController::class, "StoreToDo"])->name('storetodo');
+Route::get('/todos', [ToDoController::class, "ListToDo"])->name('listTodo');
+Route::get('/todo/details/{id}', [ToDoController::class, "DetailsToDo"]);
+Route::get('/todo/delete/{id}', [ToDoController::class, "DeleteToDo"]);
+Route::post('/storetodo', [ToDoController::class, "StoreToDo"])->name('storeTodo');
+Route::get('/todo/update/{id}', [ToDoController::class, "UpdateToDo"]);
+Route::post('/todo/edit/{id}', [ToDoController::class, "EditToDo"])->name('editTodo');
 
 
 Route::get('/categories', [CategoryController::class, "ListCategory"])->name('listCategory');
-Route::post('/storecategory', [CategoryController::class, "StoreCategory"])->name('storecategory');
-Route::get('/delete/{id}', [CategoryController::class, "DeleteCategory"]);
+Route::post('/storecategory', [CategoryController::class, "StoreCategory"])->name('storeCategory');
+Route::get('/category/delete/{id}', [CategoryController::class, "DeleteCategory"]);
+Route::get('/category/update/{id}', [CategoryController::class, "UpdateCategory"]);
+Route::post('/category/edit/{id}', [CategoryController::class, "EditCategory"])->name('editCategory');

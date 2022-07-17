@@ -26,7 +26,7 @@
                             <div class="pb-2">
                                 <div class="card">
                                     <div class="card-body">
-                                        <form action="{{ route('storecategory') }}" method="POST">
+                                        <form action="{{ route('storeCategory') }}" method="POST">
                                             @csrf
                                             <div class="d-flex flex-row align-items-center">
                                                 <input type="text" name="name"
@@ -78,10 +78,10 @@
                                         </td>
                                         <td>
                                             <div class="d-flex flex-row justify-content-start p-2 mb-1">
-                                                <a href="#!" class="text-info" data-mdb-toggle="tooltip"
+                                                <a href="/category/update/{{ $stmt->id }}" class="text-info" data-mdb-toggle="tooltip"
                                                     title="Edit todo"><i class="fas fa-pencil-alt me-3"></i></a>
-                                                <a href="/delete/{{ $stmt->id }}" class="text-danger" data-mdb-toggle="tooltip"
-                                                    title="Delete todo" onclick="return confirm('آیا میخواهید دسته بندی <{{ $stmt->title }}> را حذف کنید؟')"><i class="fas fa-trash-alt"></i></a>
+                                                <a href="/category/delete/{{ $stmt->id }}" class="text-danger" data-mdb-toggle="tooltip"
+                                                    title="Delete todo" onclick="return confirm('آیا میخواهید دسته بندی <{{ $stmt->name }}> را حذف کنید؟')"><i class="fas fa-trash-alt"></i></a>
                                             </div>
                                         </td>
                                     </tr>
