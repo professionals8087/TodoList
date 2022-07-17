@@ -9,6 +9,11 @@ class Todo extends Model
 {
     use HasFactory;
 
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+
     public static function getAll()
     {
         return self::query()->get()->all();

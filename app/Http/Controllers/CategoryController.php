@@ -2,46 +2,52 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CategoryRequest;
 use App\Models\Category;
+use App\Models\Todo;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-    public function ListCategory()
+    public function ListCategories()
     {
         $stmt = Category::getAll();
-        return view('categorylist', ['category' => $stmt]);
+        return view('layouts.categories', ['category' => $stmt]);
     }
 
-    public function StoreCategory(Request $request)
+    public function CreateCategories(CategoryRequest $request)
     {
         $category = new Category();
         $category->name = $request->name;
         if ($category->save()) {
-            return redirect()->route('listCategory');
+            return redirect()->route('listcategories');
         }
         return;
     }
 
-    public function DeleteCategory(Category $id)
+    public function DeleteCategories($id)
     {
-        $id->delete();
-        return redirect()->route('listCategory');
+        $category = Category::getID($id);
+        Todo::query()
+            ->where('category_id', $category->id)
+            ->delete();
+        $category->delete();
+        return redirect()->route('listcategories');
     }
 
-    public function UpdateCategory($id)
+    public function UpdateCategories($id)
     {
         $id = Category::getID($id);
-        return view('editCategory', ["id" => $id]);
+        return view('layouts.update-categories', ["id" => $id]);
     }
 
-    public function EditCategory(Request $request, $id)
+    public function EditCategories(CategoryRequest $request, $id)
     {
         $stmt = Category::getID($id);
         if ($stmt) {
             $stmt->name = $request->name;
             if ($stmt->save()) {
-                return redirect()->route('listCategory');
+                return redirect()->route('listcategories');
             }
         }
         return;

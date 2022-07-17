@@ -2,57 +2,76 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ToDoRequest;
+use App\Models\Category;
 use App\Models\Todo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ToDoController extends Controller
 {
-    public function ListToDo()
+    public function ListToDos()
     {
-        $stmt = Todo::getAll();
-        return view('todolist', ['todo' => $stmt]);
+        $todo = Todo::getAll();
+        $category = Category::getAll();
+        return view('layouts.todos', ['todo' => $todo, 'category' => $category]);
     }
+    
 
-    public function DetailsToDo($id)
-    {
-        $stmt = Todo::getID($id);
-        return view('details', ["show" => $stmt]);
-    }
-
-    public function DeleteToDo(Todo $id)
-    {
-        $id->delete();
-        return redirect()->route('listTodo');
-    }
-
-    public function StoreToDo(Request $request)
+    public function CreateToDos(ToDoRequest $request)
     {
         $todo = new Todo();
         $todo->title = $request->title;
         $todo->description = $request->description;
-        $todo->category = $request->category;
+        $todo->category_id = $request->category;
         if ($todo->save()) {
-            return redirect()->route('listTodo');
+            return redirect()->route('listtodos');
         }
         return;
     }
+    
 
-    public function UpdateToDo($id)
+    public function DeleteToDos(Todo $id)
+    {
+        $id->delete();
+        return redirect()->route('listtodos');
+    }
+    
+
+    public function UpdateToDos($id)
     {
         $id = Todo::getID($id);
-        return view('editTodo', ["id" => $id]);
+        $category = Category::getAll();
+        return view("layouts.update-todos", ["id" => $id, "category" => $category]);
     }
 
-    public function EditToDo(Request $request, $id)
+
+    public function EditToDos(ToDoRequest $request, $id)
     {
         $stmt = Todo::getID($id);
         if ($stmt) {
             $stmt->title = $request->title;
             $stmt->description = $request->description;
             if ($stmt->save()) {
-                return redirect()->route('listTodo');
+                return redirect()->route('listtodos');
             }
         }
         return;
+    }
+    
+    public function DoneToDos($id)
+    {
+        $stmt = Todo::getID($id);
+        $stmt->done_at = date('Y-m-d H:i:s');
+        if ($stmt->save()) {
+            return redirect()->route('listtodos');
+        }
+    }
+
+
+    public function DetailsToDos($id)
+    {
+        $stmt = Todo::getID($id);
+        return view('layouts.infotodos', ["show" => $stmt]);
     }
 }

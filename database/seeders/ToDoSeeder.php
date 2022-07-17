@@ -20,7 +20,7 @@ class ToDoSeeder extends Seeder
                 "id" => 1,
                 "title" => "خرید کردن",
                 "description" => "خرید نان و مواد غذایی",
-                "category" => "open",
+                "category_id" => 1,
             ]
         ]);
 
@@ -29,7 +29,7 @@ class ToDoSeeder extends Seeder
                 "id" => 2,
                 "title" => "درس خواندن",
                 "description" => "خواندن درس شیمی و فیزیک",
-                "category" => "done",
+                "category_id" => 1,
             ]
         ]);
     }

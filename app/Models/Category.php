@@ -9,6 +9,11 @@ class Category extends Model
 {
     use HasFactory;
 
+    public function todo()
+    {
+        return $this->hasMany(Todo::class);
+    }
+
     public static function getAll()
     {
         return self::query()->get()->all();

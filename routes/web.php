@@ -15,24 +15,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('details');
-});
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/todos', [ToDoController::class, "ListToDos"])->name('listtodos');
+Route::post('/todos/create', [ToDoController::class, "CreateToDos"])->name('createtodos');
+Route::get('/todos/delete/{id}', [ToDoController::class, "DeleteToDos"]);
+Route::get('/todos/update/{id}', [ToDoController::class, "UpdateToDos"]);
+Route::post('/todos/edit/{id}', [ToDoController::class, "EditToDos"])->name('edittodos');
+Route::get('/todos/details/{id}', [ToDoController::class, "DetailsToDos"]);
+Route::get('/todos/done/{id}', [ToDoController::class, "DoneToDos"]);
 
-Route::get('/todos', [ToDoController::class, "ListToDo"])->name('listTodo');
-Route::get('/todo/details/{id}', [ToDoController::class, "DetailsToDo"]);
-Route::get('/todo/delete/{id}', [ToDoController::class, "DeleteToDo"]);
-Route::post('/storetodo', [ToDoController::class, "StoreToDo"])->name('storeTodo');
-Route::get('/todo/update/{id}', [ToDoController::class, "UpdateToDo"]);
-Route::post('/todo/edit/{id}', [ToDoController::class, "EditToDo"])->name('editTodo');
-
-
-Route::get('/categories', [CategoryController::class, "ListCategory"])->name('listCategory');
-Route::post('/storecategory', [CategoryController::class, "StoreCategory"])->name('storeCategory');
-Route::get('/category/delete/{id}', [CategoryController::class, "DeleteCategory"]);
-Route::get('/category/update/{id}', [CategoryController::class, "UpdateCategory"]);
-Route::post('/category/edit/{id}', [CategoryController::class, "EditCategory"])->name('editCategory');
+Route::get('/categories', [CategoryController::class, "ListCategories"])->name('listcategories');
+Route::post('/categories/create', [CategoryController::class, "CreateCategories"])->name('createcategories');
+Route::get('/categories/delete/{id}', [CategoryController::class, "DeleteCategories"]);
+Route::get('/categories/update/{id}', [CategoryController::class, "UpdateCategories"]);
+Route::post('/categories/edit/{id}', [CategoryController::class, "EditCategories"])->name('editcategories');
