@@ -25,7 +25,7 @@
                                     <div class="d-flex flex-row align-items-center">
                                         <select class="form-select" aria-label="Default select example" name="category">
                                             @foreach ($category as $item)
-                                                <option value="{{ $item->id }}" selected>{{ $item->name }}
+                                                <option value="{{ $item->id }}">{{ $item->name }}
                                                 </option>
                                             @endforeach
                                         </select>
