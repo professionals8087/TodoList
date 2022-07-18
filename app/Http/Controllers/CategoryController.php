@@ -9,12 +9,13 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
+    /********************ListCategories********************/
     public function ListCategories()
     {
         $stmt = Category::getAll();
         return view('layouts.categories', ['category' => $stmt]);
     }
-
+    /********************CreateCategories********************/
     public function CreateCategories(CategoryRequest $request)
     {
         $category = new Category();
@@ -24,7 +25,7 @@ class CategoryController extends Controller
         }
         return;
     }
-
+    /********************DeleteCategories********************/
     public function DeleteCategories($id)
     {
         $category = Category::getID($id);
@@ -34,13 +35,13 @@ class CategoryController extends Controller
         $category->delete();
         return redirect()->route('listcategories');
     }
-
+    /********************UpdateCategories********************/
     public function UpdateCategories($id)
     {
         $id = Category::getID($id);
         return view('layouts.update-categories', ["id" => $id]);
     }
-
+    /********************EditCategories********************/
     public function EditCategories(CategoryRequest $request, $id)
     {
         $stmt = Category::getID($id);

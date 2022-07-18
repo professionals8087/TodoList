@@ -1,5 +1,5 @@
     @extends('index')
-    @section('title', 'List ToDo')
+    @section('title', 'List ToDos')
     @section('content')
         <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col">
