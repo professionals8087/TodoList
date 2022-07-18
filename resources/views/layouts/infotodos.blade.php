@@ -10,24 +10,45 @@
                         <i class="fas fa-check-square me-1"></i>
                         <u>My Todo-s</u>
                     </p>
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th scope="col">Description</th>
-                                <th scope="col">Created_at</th>
-                                <th scope="col">Update_at</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <p class="fw-normal mb-0">{{ $show->description }}</p>
-                                </td>
-                                <td>{{ $show->created_at }}</td>
-                                <td>{{ $show->updated_at }}</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div class="pb-2 d-flex justify-content-center">
+                        <div class="card col-md-6">
+                            <div class="card-body">
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">ID</span>
+                                    <input type="text" class="form-control border" id="exampleFormControlInput1"
+                                        value="{{ $show->id }}" disabled>
+                                </div>
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">Title</span>
+                                    <input type="text" class="form-control border" id="exampleFormControlInput1"
+                                        value="{{ $show->title }}" disabled>
+                                </div>
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">Category</span>
+                                    <input type="text" class="form-control border" id="exampleFormControlInput1"
+                                        value="{{ $show->category->name }}" disabled>
+                                </div>
+                                <div class="mb-2">
+                                    <textarea name="description" class="form-control border" id="exampleFormControlTextarea1" rows="3" disabled>{{ $show->description }}</textarea>
+                                </div>
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text"><i class="far fa-calendar-plus"></i></span>
+                                    <input type="text" class="form-control border" id="exampleFormControlInput1"
+                                        value="{{ $show->created_at }}" disabled>
+                                </div>
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text"><i class="fas fa-pencil-alt"></i></span>
+                                    <input type="text" class="form-control border" id="exampleFormControlInput1"
+                                        value="{{ $show->updated_at }}" disabled>
+                                </div>
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text"><i class="far fa-calendar-check"></i></span>
+                                    <input type="text" class="form-control border" id="exampleFormControlInput1"
+                                        value="{{ $show->done_at }}" disabled>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

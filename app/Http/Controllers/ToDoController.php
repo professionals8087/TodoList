@@ -48,6 +48,7 @@ class ToDoController extends Controller
         if ($stmt) {
             $stmt->title = $request->title;
             $stmt->description = $request->description;
+            $stmt->category_id = $request->category;
             if ($stmt->save()) {
                 return redirect()->route('listtodos');
             }
